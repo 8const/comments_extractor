@@ -17,7 +17,7 @@ def listOfCommentsFrom(URL):
     
     #gets page's height that will be used for scrolling
     last_height = driver.execute_script("return document.documentElement.scrollHeight")
-    time.sleep(3)
+    time.sleep(5)
     
     #scrolling sycle; it brakes on the bottom
     while True:
@@ -25,7 +25,7 @@ def listOfCommentsFrom(URL):
         driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
 
     #wait to load page
-        time.sleep(5)
+        time.sleep(10)
 
     #calculate new scroll height and compare with last scroll height
         new_height = driver.execute_script("return document.body.scrollHeight")
