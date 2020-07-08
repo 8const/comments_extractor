@@ -1,0 +1,1 @@
+A simple script extracts comments from youtube using selenium to scrape and beautiful soup to parse; if you are going to use it please do a google search on the installation of the chromedriver and selenium; it's not hard but neither it's trivial;
