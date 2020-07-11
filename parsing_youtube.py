@@ -1,4 +1,5 @@
-def parseSoup(soup):
+def parseSource(source):
+    soup = BeautifulSoup(source, "html.parser")
     t = list(soup.stripped_strings)
     r = []
     for i in range(0, len(t)):
