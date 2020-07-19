@@ -3,24 +3,22 @@ from bs4 import BeautifulSoup
 import time
 
 # Prints iterations progress
-def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1, length = 30, fill = '|', printEnd = "\r"):
+def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1,
+        length = 30, fill = '|', print_end = "\r"):
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
-    filledLength = int(length * iteration // total)
-    bar = fill * filledLength + '-' * (length - filledLength)
-    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
+    filled_length = int(length * iteration // total)
+    bar = fill * filled_length + '-' * (length - filled_length)
+    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = print_end)
     if iteration == total: 
         print()
+ 
 
-
-
-#DRIVER_PATH is a string with path to chromedriver; 
 def get_page_source(URL, DRIVER_PATH, n):
 
     '''returns source of scrolled page with comments loaded
     n is number of scrolls
     DRIVER_PATH is a string with path to chromedriver'''
-
-    
+ 
     driver = webdriver.Chrome(DRIVER_PATH)
     print(" started webdriver")
     driver.get(URL)
