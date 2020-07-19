@@ -1,3 +1,8 @@
-DISCLAIMER: this code is rubbish quality; naming is terrible; work is in progress; developers are of lowest quality. However, it works.
-
- This project will extracts comments from social media. Some useful functions are already in place. We use selenium to scrape and beautiful soup to parse; if you are going to use it please do a google search on the installation of the chromedriver and selenium; it's not hard but neither it's trivial;
+Script main.py extracts comments from youtube and writes them to data.csv. Selenium is
+used for opening URLs in browser, scrolling and getting the page source. Beautiful soup is
+used for parsing that source.
+ 
+It works quite well for getting less than ~700 comments from a single video.
+Unfortunately, with higher quantities YouTube lags and stops loading more comments.
+Sometimes it can get as much as 1100.
+But we can't recommand expecting 700+ to work every time.
