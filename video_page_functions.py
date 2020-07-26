@@ -8,7 +8,7 @@ def progress_bar(iteration, total, prefix = '', suffix = '', decimals = 1,
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filled_length = int(length * iteration // total)
     bar = fill * filled_length + '-' * (length - filled_length)
-    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = print_end)
+    print(f'\r{prefix}{bar} {percent}% {suffix}', end = print_end)
     if iteration == total: 
         print()
  
@@ -19,24 +19,25 @@ def get_page_source(URL, DRIVER_PATH, n):
     n is number of scrolls
     DRIVER_PATH is a string with path to chromedriver'''
  
-    driver = webdriver.Chrome(DRIVER_PATH)
-    print(" started webdriver")
+    driver = webdriver.Chrome(DRIVER_PATH) 
+    driver.set_window_size(300, 500) 
+    print("Started webdriver")
     driver.get(URL)
-    print(" sleeping 5s")
+    print("Sleeping 5s")
     time.sleep(5)
-    print(' scrolling')
-    print("")
+    print('Scrolling')
+    print("") 
+           
     for j in range(1, n+1):
         driver.execute_script("window.scrollTo(0," +str(30000*j) +");")
         progress_bar(j, n)
         time.sleep(0.5)
+        source = driver.page_source
 
-        
-    source = driver.page_source
     print("")
-    print(" got the source") 
+    print("Got the source") 
     driver.close()
-    print(" driver closed")
+    print("Driver closed")
     return source 
 
   
@@ -72,7 +73,7 @@ def get_data_from_source(source):
     '''takes youtube video page source
        returns list of lists of name, comment, channel_URL'''
  
-    print(" extracting data from source")
+    print("Extracting data from source")
     print("")
     soup = BeautifulSoup(source, features="html.parser")
     text = list(soup.stripped_strings)
@@ -93,5 +94,5 @@ def get_data_from_source(source):
             except:
                 pass
     print("")
-    print(" finished extracting data")
+    print("Finished extracting data")
     return data 
